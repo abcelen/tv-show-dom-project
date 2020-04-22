@@ -37,7 +37,21 @@ elementSummary.innerHTML = summary;
 }
 window.onload = setup;
 
-//creates a card for each episodes
+function myFunction(episodeList) {
+  var input, filter, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+ 
+  for (i = 0; i < episodeList.length; i++) {
+      a = episodeList[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          episodeList[i].style.display = "";
+      } else {
+          episodeList[i].style.display = "none";
+      }
+  }
+}
 
 
 
