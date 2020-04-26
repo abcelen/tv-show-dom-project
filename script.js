@@ -41,6 +41,19 @@ function makePageForEpisodes(episodeList) {
     let elementSummary = document.createElement("p");
     container.appendChild(elementSummary);
     elementSummary.innerHTML = summary;
+
+    searchBox.addEventListener(`keyup`, (x) => {
+      let searchValue = x.target.value.toLowerCase();
+      let searchItems = document.getElementsByClassName(`column`);
+      Array.from(searchItems).forEach((element) => {
+        let title = element.textContent;
+        if (title.toLowerCase().indexOf(searchValue) != -1) {
+          element.style.display = "block";
+        } else {
+          element.style.display = "none";
+        }
+      });
+    });
   });
 }
 window.onload = setup;
