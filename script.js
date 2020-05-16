@@ -42,6 +42,30 @@ function makePageForEpisodes(episodeList) {
     container.appendChild(elementSummary);
     elementSummary.innerHTML = summary;
 
+    //Episode selector
+    let dropDownMenu = document.querySelector("#episode-list");
+    function makePageForEpisodes(episodeList) {
+      let episodes = document.getElementById("episodes");
+
+      episodes.innerHTML = createNewList(episodeList);
+
+
+      let inputField = document.querySelector("#site-search");
+      let dropDownMenu = document.querySelector("#episode-list");
+
+      //Episode selector
+      dropDownMenu.addEventListener("change", function (event) {
+        const episodeId = event.target.value;
+
+        let episodesFilteredById = episodeList.filter(
+          (episode) => episode.id == episodeId
+        );
+        episodes.innerHTML = createNewList(episodesFilteredById);
+      });
+
+      dropDownMenu.innerHTML = createDropDownMenu(episodeList);
+
+    //search box
     searchBox.addEventListener(`keyup`, (x) => {
       let searchValue = x.target.value.toLowerCase();
       let searchItems = document.getElementsByClassName(`column`);
